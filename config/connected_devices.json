@@ -1,0 +1,4 @@
+{
+  "airpurifier": "REQUEST Connector",
+  "fan.mypurifier2": "MQTT Broker Connector"
+}

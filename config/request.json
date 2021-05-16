@@ -1,0 +1,79 @@
+{
+  "host": "http://localhost:8080",
+  "SSLVerify": false,
+  "security": {
+    "type": "bearer",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiI0MmE2N2EyZDVmYWI0NDU0OWRlM2QzYTg0YjVkMjVlNiIsImlhdCI6MTYxODgzNDQ2NiwiZXhwIjoxOTM0MTk0NDY2fQ.unYm5jUqLKkTg-qEPiAJnrOYYE2CerxSlqjwn9m-5zE"
+  },
+  "mapping": [
+    {
+      "url": "/api/states/fan.mypurifier2",
+      "httpMethod": "GET",
+      "httpHeaders": {
+        "ACCEPT": "application/json"
+      },
+      "timeout": 0.5,
+      "scanPeriod": 5,
+      "converter": {
+        "type": "json",
+        "deviceNameJsonExpression": "${entity_id}",
+        "deviceTypeJsonExpression": "AirPurifier",
+        "udoi":"123",
+        "schemaId":"Air_Purifier",
+        "attributes": [
+        ],
+        "timeseries": [
+          {
+            "type": "double",
+            "key": "Temperature",
+            "value": "${attributes.temperature}"
+          },
+          {
+            "type": "int",
+            "key": "Humidity",
+            "value": "${attributes.humidity}"
+          },
+          {
+            "type": "string",
+            "key": "Name",
+            "value": "${entity_id}"
+          },
+          {
+            "type": "string",
+            "key": "Brand",
+            "value": "xiaomi"
+          },
+          {
+            "type": "string",
+            "key": "State",
+            "value": "${state}"
+          },
+          {
+            "type": "string",
+            "key": "Speed",
+            "value": "${attributes.mode}"
+          },
+          {
+            "type": "int",
+            "key": "Aqi",
+            "value": "${attributes.aqi}"
+          }
+        ]
+      }
+    }
+  ],
+  "attributeUpdates": [
+  ],
+  "serverSideRpc": [
+    {
+      "deviceNameFilter": ".*",
+      "methodFilter": "no-reply",
+      "requestUrlExpression": "sensor/${deviceName}/request/${methodName}/${requestId}",
+      "httpMethod": "POST",
+      "valueExpression": "${params}",
+      "httpHeaders": {
+        "Content-Type": "application/json"
+      }
+    }
+  ]
+}

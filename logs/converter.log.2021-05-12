@@ -1,0 +1,12 @@
+""2021-05-12 20:31:43" - ERROR - [json_mqtt_uplink_converter.py] - json_mqtt_uplink_converter - 79 - Error in converter, for config: 
+{"type": "json", "deviceNameJsonExpression": "${serialNumber}", "deviceTypeJsonExpression": "${sensorType}", "timeout": 60000, "attributes": [{"type": "string", "key": "model", "value": "${sensorModel}"}, {"type": "string", "key": "${sensorModel}", "value": "on"}], "timeseries": [{"type": "double", "key": "temperature", "value": "${temp}"}, {"type": "double", "key": "humidity", "value": "${hum}"}]}
+ and message: 
+{'serialNumber': 'SN-0011', 'sensorType': 'Thermometer', 'sensorModel': 'T1000', 'temp': 42, 'hum': 58}
+"
+""2021-05-12 20:31:43" - ERROR - [json_mqtt_uplink_converter.py] - json_mqtt_uplink_converter - 80 - 'NoneType' object has no attribute 'regs'"
+Traceback (most recent call last):
+  File "/Users/user/VSCodeProjects/thingsboard_gateway/connectors/mqtt/json_mqtt_uplink_converter.py", line 66, in convert
+    key = TBUtility.get_value(datatype_config["key"], data, datatype_config["type"], expression_instead_none=True)
+  File "/Users/user/VSCodeProjects/thingsboard_gateway/tb_utility/tb_utility.py", line 73, in get_value
+    print("[TBUtility positions]",positions, positions.regs)
+AttributeError: 'NoneType' object has no attribute 'regs'

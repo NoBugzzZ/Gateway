@@ -1,0 +1,101 @@
+{
+  "broker": {
+    "name":"Default Local Broker",
+    "host":"localhost",
+    "port":1893,
+    "clientId": "ThingsBoard_gateway",
+    "security": {
+      "type": "basic",
+      "username": "user",
+      "password": "password"
+    }
+  },
+  "mapping": [
+    {
+      "topicFilter": "/sensor/data",
+      "converter": {
+        "type": "json",
+        "deviceNameJsonExpression": "${entity_id}",
+        "deviceTypeJsonExpression": "AirPurifier",
+        "udoi":"111",
+        "schemaId":"ap",
+        "timeout": 60000,
+        "attributes": [
+        ],
+        "timeseries": [
+          {
+            "type": "double",
+            "key": "Temperature",
+            "value": "${attributes.temperature}"
+          },
+          {
+            "type": "int",
+            "key": "Humidity",
+            "value": "${attributes.humidity}"
+          },
+          {
+            "type": "string",
+            "key": "Name",
+            "value": "${entity_id}"
+          },
+          {
+            "type": "string",
+            "key": "Brand",
+            "value": "xiaomi"
+          },
+          {
+            "type": "string",
+            "key": "State",
+            "value": "${state}"
+          },
+          {
+            "type": "string",
+            "key": "Speed",
+            "value": "${attributes.mode}"
+          },
+          {
+            "type": "int",
+            "key": "Aqi",
+            "value": "${attributes.aqi}"
+          }
+        ]
+      }
+    }
+  ],
+  "connectRequests": [
+    {
+      "topicFilter": "sensor/connect",
+      "deviceNameJsonExpression": "${SerialNumber}"
+    },
+    {
+      "topicFilter": "sensor/+/connect",
+      "deviceNameTopicExpression": "(?<=sensor\/)(.*?)(?=\/connect)"
+    }
+  ],
+  "disconnectRequests": [
+    {
+      "topicFilter": "sensor/disconnect",
+      "deviceNameJsonExpression": "${SerialNumber}"
+    },
+    {
+      "topicFilter": "sensor/+/disconnect",
+      "deviceNameTopicExpression": "(?<=sensor\/)(.*?)(?=\/disconnect)"
+    }
+  ],
+  "attributeUpdates": [
+    {
+      "deviceNameFilter": "SmartMeter.*",
+      "attributeFilter": "uploadFrequency",
+      "topicExpression": "sensor/${deviceName}/${attributeKey}",
+      "valueExpression": "{\"${attributeKey}\":\"${attributeValue}\"}"
+    }
+  ],
+  "serverSideRpc": [
+    {
+      "deviceNameFilter": ".*",
+      "methodFilter": "no-reply",
+      "requestTopicExpression": "sensor/${deviceName}/request/${methodName}/${requestId}",
+      "valueExpression": "${params}"
+    }
+  ]
+}

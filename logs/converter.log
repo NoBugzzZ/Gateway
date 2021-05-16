@@ -1,0 +1,30 @@
+""2021-05-15 23:10:43" - ERROR - [json_mqtt_uplink_converter.py] - json_mqtt_uplink_converter - 66 - Error in converter, for config: 
+{"type": "json", "deviceNameJsonExpression": "${entity_id}", "deviceTypeJsonExpression": "AirPurifier", "udoi": "111", "schemaId": "ap", "timeout": 60000, "attributes": [], "timeseries": [{"type": "double", "key": "Temperature", "value": "${attributes.temperature}"}, {"type": "int", "key": "Humidity", "value": "${attributes.humidity}"}, {"type": "string", "key": "Name", "value": "${entity_id}"}, {"type": "string", "key": "Brand", "value": "xiaomi"}, {"type": "string", "key": "State", "value": "${state}"}, {"type": "string", "key": "Speed", "value": "${attributes.mode}"}, {"type": "int", "key": "Aqi", "value": "${attributes.aqi}"}]}
+ and message: 
+{'entity_id': 'fan.mypurifier2', 'state': 'off', 'attributes': {'speed_list': ['Auto', 'Silent', 'Favorite', 'Idle'], 'temperature': 22.2, 'humidity': 38, 'aqi': 53, 'mode': 'idle'}}
+"
+""2021-05-15 23:10:43" - ERROR - [json_mqtt_uplink_converter.py] - json_mqtt_uplink_converter - 67 - 'converter'"
+Traceback (most recent call last):
+  File "/Users/user/VSCodeProjects/thingsboard_gateway/connectors/mqtt/json_mqtt_uplink_converter.py", line 57, in convert
+    if self.__config['converter'].get("udoi") is not None:
+KeyError: 'converter'
+""2021-05-15 23:12:28" - ERROR - [json_mqtt_uplink_converter.py] - json_mqtt_uplink_converter - 66 - Error in converter, for config: 
+{"type": "json", "deviceNameJsonExpression": "${entity_id}", "deviceTypeJsonExpression": "AirPurifier", "udoi": "111", "schemaId": "ap", "timeout": 60000, "attributes": [], "timeseries": [{"type": "double", "key": "Temperature", "value": "${attributes.temperature}"}, {"type": "int", "key": "Humidity", "value": "${attributes.humidity}"}, {"type": "string", "key": "Name", "value": "${entity_id}"}, {"type": "string", "key": "Brand", "value": "xiaomi"}, {"type": "string", "key": "State", "value": "${state}"}, {"type": "string", "key": "Speed", "value": "${attributes.mode}"}, {"type": "int", "key": "Aqi", "value": "${attributes.aqi}"}]}
+ and message: 
+{'entity_id': 'fan.mypurifier2', 'state': 'off', 'attributes': {'speed_list': ['Auto', 'Silent', 'Favorite', 'Idle'], 'temperature': 22.2, 'humidity': 38, 'aqi': 53, 'mode': 'idle'}}
+"
+""2021-05-15 23:12:28" - ERROR - [json_mqtt_uplink_converter.py] - json_mqtt_uplink_converter - 67 - 'converter'"
+Traceback (most recent call last):
+  File "/Users/user/VSCodeProjects/thingsboard_gateway/connectors/mqtt/json_mqtt_uplink_converter.py", line 58, in convert
+    dict_result["udoi"] = TBUtility.get_value(self.__config['converter'].get("udoi"), data, expression_instead_none=True)
+KeyError: 'converter'
+""2021-05-15 23:12:28" - ERROR - [json_mqtt_uplink_converter.py] - json_mqtt_uplink_converter - 66 - Error in converter, for config: 
+{"type": "json", "deviceNameJsonExpression": "${entity_id}", "deviceTypeJsonExpression": "AirPurifier", "udoi": "111", "schemaId": "ap", "timeout": 60000, "attributes": [], "timeseries": [{"type": "double", "key": "Temperature", "value": "${attributes.temperature}"}, {"type": "int", "key": "Humidity", "value": "${attributes.humidity}"}, {"type": "string", "key": "Name", "value": "${entity_id}"}, {"type": "string", "key": "Brand", "value": "xiaomi"}, {"type": "string", "key": "State", "value": "${state}"}, {"type": "string", "key": "Speed", "value": "${attributes.mode}"}, {"type": "int", "key": "Aqi", "value": "${attributes.aqi}"}]}
+ and message: 
+{'entity_id': 'fan.mypurifier2', 'state': 'off', 'attributes': {'speed_list': ['Auto', 'Silent', 'Favorite', 'Idle'], 'temperature': 22.2, 'humidity': 38, 'aqi': 53, 'mode': 'idle'}}
+"
+""2021-05-15 23:12:28" - ERROR - [json_mqtt_uplink_converter.py] - json_mqtt_uplink_converter - 67 - 'converter'"
+Traceback (most recent call last):
+  File "/Users/user/VSCodeProjects/thingsboard_gateway/connectors/mqtt/json_mqtt_uplink_converter.py", line 58, in convert
+    dict_result["udoi"] = TBUtility.get_value(self.__config['converter'].get("udoi"), data, expression_instead_none=True)
+KeyError: 'converter'
